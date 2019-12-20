@@ -1,0 +1,44 @@
+h1{
+    text-align: center;
+    color: yellow;
+}
+
+#info{
+color: cyan;
+margin-top: 50px;
+text-align: center;
+font-size: 24px;
+}
+
+#quizContainer{
+    color:cyan ;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 24px;
+}
+
+#center{
+    text-align-last: center;
+}
+#start{
+    width: 25%;
+    text-align-last: center;
+}
+body{
+    background-image: url(images/chalkboard.jpg);
+    background-size: cover;
+}
+
+button{
+width: 20%;
+margin: 10px;
+background-color: purple;
+}
+#timer{
+    float: right;
+    color: red;
+}
+#empty{
+    font-size: 24px;
+    color: cyan;
+}

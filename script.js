@@ -1,9 +1,14 @@
 // created variables and linked them to the html
 var quizContainer = document.getElementById("quizContainer");
 var startButton = document.getElementById("start");
+var description = document.getElementById("info");
+var result = document.getElementById("results")
+var result2 = document.getElementById("incorrect")
 var questionCount = 0;
 var correct = 0;
 var incorrect = 0;
+var secondsLeft = 75;
+var time = document.getElementById("timer");
 // created my questions to be used for the quiz
 var myQuestions = [
     {
@@ -36,7 +41,9 @@ var myQuestions = [
 // created the function which starts the quiz
 function startGame() {
     document.getElementById("start").style.display = "none";
+    description.style.display = "none";
     renderQuestion();
+    setTime();
 }
 
 // function to display the quiz and its option buttons
@@ -67,14 +74,32 @@ function check(event) {
     if (questionCount < myQuestions.length) {
         renderQuestion();
     } else {
+        secondsLeft = 1;
         endGame();
     };
 }
 
 // function which shows the results at the end
 function endGame() {
-    alert(`The score is ${correct} correct answers and ${incorrect} incorrect`)
+    document.getElementById("quizContainer").style.display = "none";
+    document.getElementById("buttons").style.display = "none";
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("incorrect").innerHTML = "";
+    result.append("You got " + correct + " right")
+    result2.append("You got " + incorrect + " wrong")
 }
 
-// added a click event on the start button which starts the game
+function setTime() {
+    var timerInterval = setInterval(function () {
+        secondsLeft--;
+        var miss = 0;
+        time.textContent = "Time: " + (miss + secondsLeft);
+        if (secondsLeft < 1) {
+            clearInterval(timerInterval);
+            endGame();
+        }
+
+    }, 1000);
+}
+// added a click event on the start button which starts the quiz
 startButton.addEventListener('click', startGame)
